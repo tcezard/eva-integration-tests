@@ -14,3 +14,4 @@ genome_downloader:
 release:
   inventory_table: eva_progress_tracker.clustering_release_tracker
   release_output: /opt/test_eva_release/
+  public_ftp_release_base_folder: /opt/test_eva_release/ftp

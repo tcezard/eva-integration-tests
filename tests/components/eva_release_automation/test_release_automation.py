@@ -124,6 +124,44 @@ class TestRunReleaseForSpecies(TestWithDockerCompose):
         assert expected_completed == output
 
     @log_on_failure
+    def test_publish_release_to_ftp(self):
+        # Run the release to generate release files
+        run_command_in_container(
+            self.container_name,
+            'python3 -m release_automation.run_release_for_species '
+            '--taxonomy_id 4530 --assembly_accessions GCA_000005425.2 --release_version 1'
+        )
+
+        # Publish the release to the FTP folder
+        run_command_in_container(
+            self.container_name,
+            'python3 -m publish_release_to_ftp.publish_release_files_to_ftp '
+            '--release_version 1 --taxonomy_id 4530'
+        )
+
+        ftp_release_dir = os.path.join(self.test_run_dir, 'ftp', 'release_1')
+        species_assembly_dir = os.path.join(ftp_release_dir, 'by_species', 'oryza_sativa', 'GCA_000005425.2')
+        expected_files = [
+            os.path.join(species_assembly_dir, f)
+            for f in [
+                '4530_GCA_000005425.2_current_ids.vcf.gz',
+                '4530_GCA_000005425.2_current_ids.vcf.gz.csi',
+                '4530_GCA_000005425.2_deprecated_ids.txt.gz',
+                '4530_GCA_000005425.2_merged_ids.vcf.gz',
+                '4530_GCA_000005425.2_merged_ids.vcf.gz.csi',
+                'md5checksums.txt',
+                'README_release_known_issues.txt',
+                'README_release_general_info.txt',
+                'README_rs_ids_counts.txt'
+            ]
+        ]
+        for expected_file in expected_files:
+            assert os.path.isfile(expected_file), f'Expected file not found: {expected_file}'
+
+        assembly_dir = os.path.join(ftp_release_dir, 'by_assembly', 'GCA_000005425.2')
+        assert os.path.isdir(assembly_dir), f'Expected assembly directory not found: {assembly_dir}'
+
+    @log_on_failure
     def test_create_release_tracking_table(self):
         with get_metadata_connection_handle(maven_profile, maven_settings_file) as conn:
             # Insert a clustered_variant_update entry so fill_should_be_released picks it up
