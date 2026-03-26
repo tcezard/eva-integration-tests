@@ -9,13 +9,12 @@ if [[ -n "$SOURCE_GITHUB_SHA" ]] ; then SOURCE_GITHUB_REF=$SOURCE_GITHUB_SHA ; f
 
 #TODO: Remove before merging the PR
 SOURCE_GITHUB_REPOSITORY=tcezard/eva-release-automation
-SOURCE_GITHUB_REF=partial-release
+SOURCE_GITHUB_REF=use_hard_links
 
 echo "Clone https://github.com/${SOURCE_GITHUB_REPOSITORY}.git"
 git clone https://github.com/${SOURCE_GITHUB_REPOSITORY}.git eva-release-automation
 cd eva-release-automation
 git checkout ${SOURCE_GITHUB_REF}
-git -c user.email="integration-test@ebi.ac.uk" -c user.name="Integration Test" merge origin/use_hard_links
 
 python -m pip install .
 
