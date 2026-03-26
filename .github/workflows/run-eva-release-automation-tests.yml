@@ -2,7 +2,7 @@ name: Run Tests from EVA Release Automation
 
 on:
   repository_dispatch:
-    types: [trigger-eva-release-autoamtion-tests]
+    types: [trigger-eva-release-automation-tests]
 
 jobs:
   build:
