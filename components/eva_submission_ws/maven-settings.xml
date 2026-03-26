@@ -17,10 +17,10 @@
                 <globus.client-id>test-client-id</globus.client-id>
                 <globus.client-secret>test-client-secret</globus.client-secret>
                 <globus.refresh-token>test-refresh-token</globus.refresh-token>
-                <globus.upload-http-domain>http://mock_globus:5000</globus.upload-http-domain>
+                <globus.upload-http-domain>http://mock-globus:5000</globus.upload-http-domain>
                 <globus.submission-endpoint-id>test-submission-endpoint-id</globus.submission-endpoint-id>
-                <globus.token-endpoint>http://mock_globus:5000/v2/oauth2/token</globus.token-endpoint>
-                <globus.transfer-base-url>http://mock_globus:5000/v0.10/operation/endpoint</globus.transfer-base-url>
+                <globus.token-endpoint>http://mock-globus:5000/v2/oauth2/token</globus.token-endpoint>
+                <globus.transfer-base-url>http://mock-globus:5000/v0.10/operation/endpoint</globus.transfer-base-url>
 
                 <eva.helpdesk-email>eva-helpdesk@ebi.ac.uk</eva.helpdesk-email>
                 <eva.email-server>mailhog</eva.email-server>

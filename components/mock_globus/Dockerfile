@@ -4,8 +4,8 @@ WORKDIR /app
 
 COPY mock_globus.py /app/mock_globus.py
 
-RUN pip install Flask gunicorn
+RUN pip install Flask
 
 EXPOSE 5000
 
-CMD ["gunicorn", "-b", "0.0.0.0:5000", "mock_globus:app"]
+CMD ["python", "mock_globus.py"]

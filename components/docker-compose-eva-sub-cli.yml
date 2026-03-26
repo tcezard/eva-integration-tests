@@ -33,7 +33,7 @@ services:
       - 8080:8080
     depends_on:
       - postgres_db
-      - mock_globus
+      - mock-globus
       - mailhog
     networks:
       - eva_network
@@ -53,7 +53,7 @@ services:
     networks:
       - eva_network
 
-  mock_globus:
+  mock-globus:
     image: mock_globus_test
     build:
       context: ./mock_globus
