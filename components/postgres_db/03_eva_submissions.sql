@@ -122,3 +122,7 @@ CREATE TABLE eva_submissions.call_home_event (
 
 ALTER TABLE eva_submissions.call_home_event OWNER to metadata_db_user;
 GRANT ALL ON TABLE eva_submissions.call_home_event to metadata_db_user;
+
+--- Insert the test eva submission account
+INSERT INTO eva_submissions.submission_account (id,first_name,last_name,login_type,primary_email,user_id) VALUES
+	 ('eva_webin','Test','User','webin','test@ebi.ac.uk','Webin-123');

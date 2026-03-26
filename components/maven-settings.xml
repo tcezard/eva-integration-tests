@@ -45,6 +45,7 @@
                 <eva.count-stats.url>http://eva-ws:8080/count_stats</eva.count-stats.url>
                 <eva.count-stats.username>count_stats_user</eva.count-stats.username>
                 <eva.count-stats.password>count_stats_pass</eva.count-stats.password>
+                <eva.submission.account>Webin-123_webin</eva.submission.account>
             </properties>
         </profile>
 
